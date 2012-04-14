@@ -1,7 +1,6 @@
 require 'json'
 require 'date'
 require 'time'
-require 'active_support'
 
 class Parser
 	def initialize(start_date, time, type)
@@ -24,7 +23,6 @@ class Parser
     # now for each of the 90 days we'll create calendar events based on the start date
     (1..90).each { |n|
       agenda = ''
-      current_week = n/7.ceil + 1
       start_date = (get_date + n).strftime('%m/%d/%y')
       subject = workouts[events[n-1]]
       start_time = get_time.strftime('%T')   #2/14/2008,8:10:00
