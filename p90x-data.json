@@ -1,0 +1,33 @@
+{
+    "workouts": [
+           "Chest & Back, Ab Ripper X",
+            "Plyometrics",
+            "Shoulders & Arms, Ab Ripper X",
+            "Yoga X",
+            "Legs & Back, Ab Ripper X",
+            "Kenpo X",
+            "Rest or X Stretch",
+            "Core Synergistics",
+            "Chest, Shoulders & Triceps, Ap Ripper X",
+            "Back & Biceps, Ab Ripper X",
+            "Cardio X",
+            "X Stretch"
+    ],
+	"classic": [
+        0,1,2,3,4,5,6,
+        0,1,2,3,4,5,6,
+        0,1,2,3,4,5,6,
+        3,7,5,11,7,3,6,
+        8,1,9,3,4,5,6,
+        8,1,9,3,4,5,6,
+        8,1,9,3,4,5,6,
+        3,7,5,11,7,3,6,
+        0,1,2,3,4,5,6,
+        8,1,9,3,4,5,6,
+        0,1,2,3,4,5,6,
+        8,1,9,3,4,5,6,
+        3,7,5,11,7,3,6
+    ],
+	"leans": [],
+    "doubles": []
+}
