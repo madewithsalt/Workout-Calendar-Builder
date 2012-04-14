@@ -23,7 +23,8 @@ class Parser
     # now for each of the 90 days we'll create calendar events based on the start date
     (1..90).each { |n|
       agenda = ''
-      start_date = (get_date + n).strftime('%m/%d/%y')
+
+      start_date = n==1 ? (get_date).strftime('%m/%d/%y') : (get_date + (n-1)).strftime('%m/%d/%y')
       subject = workouts[events[n-1]]
       start_time = get_time.strftime('%T')   #2/14/2008,8:10:00
       end_time = ''
@@ -36,6 +37,7 @@ class Parser
       agenda += "\"#{subject}\",#{start_date},#{start_time},#{end_date},#{end_time},#{all_day},#{description},#{location},#{private} \r\n"
       parsed_data += agenda
     }
+
     puts parsed_data
     save_file_data(parsed_data)
   end
