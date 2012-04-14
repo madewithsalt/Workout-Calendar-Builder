@@ -3,6 +3,7 @@
 This is a silly script I wrote to create a CSV file that's compatible with Google Calendar.
 
 **Requirements**
+
 - A terminal window
 - Ruby
 
@@ -20,6 +21,7 @@ It's a pretty stupid program. You have to use this order, and "classic" is the o
 
 
 **Pull requests welcome!**
+
 Eventually I'll make this into a cute little web-page, but until then its for the enjoyment of us hardcore nerds only. :)
 
 I was too lazy to add doubles and leans, but it's ready to be added to the JSON.
