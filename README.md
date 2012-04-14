@@ -9,6 +9,7 @@ This is a silly script I wrote to create a CSV file that's compatible with Googl
 
 
 **Example Usage**
+
 	$ ruby p90x-csv.rb "April 16, 2012", "7:30 AM", "classic"
 
 It's a pretty stupid program. You have to use this order, and "classic" is the only thing supported right now.
