@@ -3,29 +3,43 @@ require 'date'
 require 'time'
 
 class Parser
-	def initialize(start_date, time, type)
-    @file = File.read('p90x-data.json')
+	def initialize(start_date, time, type, difficulty)
+    @file = File.read("#{type}-data.json")
 		@data = JSON.parse(@file)
-    @file_name = "p90x_#{type}.csv"
+    @file_name = "#{type}_#{difficulty}.csv"
 
-    parse_file_data(start_date, time, type)
+    parse_file_data(start_date, time, difficulty)
   end
-  def parse_file_data(date, time, type)
+  def parse_file_data(date, time, difficulty)
     get_date = Date.parse(date)
     get_time = DateTime.parse("#{get_date} #{time}")
     workouts = @data['workouts']
-    events = @data[type]
+    duration = @data['duration']
+    events = @data[difficulty]
 
     #start with the top of the csv = google calendar style
     parsed_data = "Subject,Start Date,Start Time,End Date,End Time,All Day Event,Reminder On/Off,\
                   Reminder Date,Reminder Time,Meeting Organizer,Description,Location,Private \r\n"
 
-    # now for each of the 90 days we'll create calendar events based on the start date
-    (1..90).each { |n|
+    # now for each of the days we'll create calendar events based on the start date
+    (events).each_index { |n|
       agenda = ''
 
-      start_date = n==1 ? (get_date).strftime('%m/%d/%y') : (get_date + (n-1)).strftime('%m/%d/%y')
-      subject = workouts[events[n-1]]
+      start_date = (get_date + n).strftime('%m/%d/%y')
+
+      if events[n].is_a? Array
+        event_names = []
+
+        for idx in events[n]
+          event_names.push(workouts[idx])
+        end
+
+        subject = event_names.join(" & ")
+
+      else
+        subject = workouts[events[n]]
+      end
+
       start_time = get_time.strftime('%T')   #2/14/2008,8:10:00
       end_time = ''
       end_date = start_date
@@ -49,6 +63,6 @@ class Parser
   end
 end
 
-# EXAMPLE USE: Takes 3 values, Start Date, Start Time, and mode. Only Classic is in now.
-#parser = Parser.new("April 18, 2012", "7:30 AM", "classic")
-parser = Parser.new(ARGV[0], ARGV[1], ARGV[2])
+# EXAMPLE USE: 
+#parser = Parser.new("April 18, 2012", "7:30 AM", "t25", "classic")
+parser = Parser.new(ARGV[0], ARGV[1], ARGV[2], ARGV[3])
